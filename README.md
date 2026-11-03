@@ -1,118 +1,195 @@
+<div align="center">
+
 # Project Structure Mapper
 
-Ferramenta local e gratuita para entender a organização de projetos de código.
-**Funciona offline, não instala pacotes, não modifica o projeto analisado e não envia nada para a internet.**
+### Entenda a estrutura de projetos de código, sem abrir arquivo por arquivo.
 
-## Comece em poucos cliques (Windows)
+**Mapeador local, gratuito e guiado em português — Python, Node.js e ASP.NET Web Forms.**
 
-1. Instale o [Python 3](https://www.python.org/downloads/) (versão 3.8 ou mais nova).
-   Na primeira tela do instalador, marque **"Add python.exe to PATH"**.
-2. Baixe este repositório como ZIP (botão **Code → Download ZIP**) e extraia a pasta.
-3. **Clique duas vezes em `INICIAR_WINDOWS.bat`.**
-4. No menu, escolha **1 — Mapear um projeto** (ou só pressione Enter).
-5. Cole o caminho da pasta do projeto ou pressione Enter para abrir a janela de seleção.
-   Dica: clique com o botão direito na pasta e use **"Copiar como caminho"**; as aspas são aceitas.
-6. Escolha o tipo de relatório: **1 — público/resumido** ou **2 — privado/detalhado**.
-7. Pressione Enter para salvar em `C:\Users\<seu-usuário>\ProjectStructureReports` (ou digite outra pasta fora do projeto).
-8. Confira o resumo e pressione Enter para iniciar.
-9. Ao terminar, o assistente oferece abrir a pasta com o relatório e o ZIP.
+![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?style=flat-square&logo=python&logoColor=white)
+![Windows](https://img.shields.io/badge/Windows-10%20%2F%2011-0078D4?style=flat-square)
+![Offline](https://img.shields.io/badge/Execu%C3%A7%C3%A3o-Offline-257B57?style=flat-square)
+![Sem pacotes](https://img.shields.io/badge/Pacotes%20extras-Zero-555?style=flat-square)
+![Somente leitura](https://img.shields.io/badge/Projeto%20analisado-Somente%20leitura-257B57?style=flat-square)
 
-**Atalho:** você também pode **arrastar a pasta do projeto para cima do `INICIAR_WINDOWS.bat`**. O assistente abre com a pasta já escolhida.
+**[Instalar e começar](#comece-aqui-windows-10-e-11) · [Comandos CMD](#uso-pelo-cmd-prompt-de-comando) · [Relatórios](#resultados-gerados) · [Ajuda para iniciantes](docs/GUIA_WINDOWS.md)**
 
-### Linux / macOS
+</div>
 
-Execute `python3 mapper.py` no terminal para abrir o mesmo assistente (com seletor gráfico, se disponível).
+---
 
-### Uso automatizado (linha de comando)
+## O que é?
 
-```bash
-python mapper.py /caminho/do/projeto                      # relatório público
-python mapper.py /caminho/do/projeto --mode private --output /caminho/dos/relatorios
-python mapper.py --assistente /caminho/do/projeto         # assistente com a pasta já escolhida
-python mapper.py --help
-```
+Recebeu um projeto grande e não sabe por onde começar? O **Project Structure Mapper** cria um mapa do repositório para ajudar a identificar tecnologias, pastas, arquivos e relações estáticas.
 
-No Windows, `py -3 mapper.py "C:\meu-projeto" --mode private` também funciona.
-Códigos de saída: `0` sucesso, `1` erro (mensagem explica o motivo), `2` assistente sem terminal interativo.
+| Perfil | O que você consegue fazer |
+| --- | --- |
+| **Iniciante** | Usar um menu passo a passo, sem precisar aprender CMD |
+| **Desenvolvedor** | Enxergar a estrutura rapidamente |
+| **Legado ASP.NET** | Relacionar páginas, Master Pages, controles e arquivos declarados |
+| **Equipe técnica** | Gerar relatórios locais sem copiar o código-fonte |
 
-## O que a ferramenta entrega?
+> **Privacidade primeiro:** a ferramenta lê os arquivos localmente, não altera a pasta analisada e não envia o projeto para a internet. O relatório é salvo em outra pasta. Ainda assim, revise qualquer resultado antes de compartilhar.
 
-Cada execução cria uma pasta nova, por exemplo `ProjectStructureReports\mapa-publico-20260101-153000\`, com:
+## Comece aqui: Windows 10 e 11
+
+**Requisito:** Python 3.8 ou mais recente. **Não precisa instalar Git, Visual Studio ou bibliotecas Python adicionais.**
+
+1. **Instale o Python:** [python.org/downloads](https://www.python.org/downloads/). Marque **Add python.exe to PATH** caso essa opção apareça no instalador.
+2. **Baixe os arquivos do projeto:** no GitHub, clique em **Code → Download ZIP** e extraia o ZIP. É preciso extrair antes de executar.
+3. **Abra a pasta extraída** e confirme que existem os arquivos **INICIAR_WINDOWS.bat** e **mapper.py**.
+4. **Dê dois cliques em INICIAR_WINDOWS.bat**. Uma janela do Prompt de Comando vai abrir.
+5. Escolha **1 — Mapear um projeto** (ou pressione Enter).
+6. Cole o caminho da pasta que quer analisar, ou pressione Enter para tentar abrir a janela de seleção.
+7. Escolha **1 — Público/resumido** ou **2 — Privado/detalhado**.
+8. Pressione Enter para usar a pasta de saída padrão ou escolha outra **fora da pasta analisada**.
+9. Confira o resumo, confirme e, ao concluir, abra a pasta dos resultados.
+
+**Atalho:** arraste a pasta do projeto **sobre o INICIAR_WINDOWS.bat**. O assistente recebe o caminho automaticamente.
+
+> **Versão em desenvolvimento:** enquanto o [PR #1 da v2](https://github.com/mateuscengeroff-prog/Project-Structure-Mapper/pull/1) estiver em Draft, a branch **main** pode conter apenas o arquivo .gitignore. Nesse caso, antes do **Code → Download ZIP**, selecione **feat/interactive-mapper-v2** no seletor de branches do GitHub. O arquivo BAT ainda **não foi testado num Windows físico**.
+
+<details>
+<summary><strong>Como reconhecer a pasta correta depois da extração?</strong></summary>
+
+~~~text
+Project-Structure-Mapper/
+├── INICIAR_WINDOWS.bat   ← dois cliques
+├── mapper.py              ← programa Python
+├── README.md              ← este guia
+└── tests/
+    └── test_mapper.py
+~~~
+
+Se só apareceu .gitignore, você baixou a branch main antes da integração da versão 2.
+
+</details>
+
+## Uso pelo CMD (Prompt de Comando)
+
+**CMD** é o terminal clássico do Windows 10 e 11. O aplicativo **não exige que você saiba usá-lo**, mas aqui estão os comandos para executar e entender.
+
+1. No **Explorador de Arquivos**, entre na pasta que contém **mapper.py**.
+2. Clique na barra de endereço dessa pasta, digite **cmd** e pressione **Enter**.
+3. Na janela que abrir, digite um dos comandos a seguir.
+
+**Verificar se o Python está instalado:**
+
+~~~bat
+py -3 --version
+~~~
+
+**Abrir o assistente pelo terminal:**
+
+~~~bat
+INICIAR_WINDOWS.bat
+~~~
+
+Ou, diretamente pelo Python:
+
+~~~bat
+py -3 mapper.py
+~~~
+
+**Mapear um projeto de exemplo no modo público (sem menu):**
+
+~~~bat
+py -3 mapper.py "C:\Projetos\MeuProjeto" --mode public
+~~~
+
+**Gerar relatório detalhado em uma pasta separada:**
+
+~~~bat
+py -3 mapper.py "C:\Projetos\MeuProjeto" --mode private --output "%USERPROFILE%\Documents\RelatoriosMapper"
+~~~
+
+**Mostrar ajuda:**
+
+~~~bat
+py -3 mapper.py --help
+~~~
+
+Substitua **C:\Projetos\MeuProjeto** pelo caminho real da pasta a analisar. Use **aspas** para caminhos com espaços.
+
+Se **py** não for reconhecido, tente **python --version**. Caso funcione, use **python** no lugar de **py -3**.
+
+**[Tutorial completo: CMD, download, pasta de saída e resolução de erros](docs/GUIA_WINDOWS.md)**
+
+## Resultados gerados
+
+A cada execução, é criada uma **nova pasta de saída**. Os relatórios não ficam dentro do projeto analisado.
 
 | Arquivo | Público | Privado | Conteúdo |
-|---|---|---|---|
-| `relatorio.md` | ✓ | ✓ | Resumo legível |
-| `estrutura.json` | ✓ | ✓ | Mesmos dados em formato estruturado |
-| `arvore.txt` | – | ✓ | Árvore de pastas e arquivos |
-| `mapa_do_projeto.zip` | ✓ | ✓ | Os arquivos acima, juntos |
+| --- | :---: | :---: | --- |
+| **relatorio.md** | ✓ | ✓ | Resumo para leitura |
+| **estrutura.json** | ✓ | ✓ | Dados estruturados |
+| **arvore.txt** | — | ✓ | Árvore de pastas e arquivos |
+| **mapa_do_projeto.zip** | ✓ | ✓ | Pacote dos relatórios, sem código-fonte |
 
-- **Modo público (padrão):** tecnologias prováveis e contagem por tipo de arquivo. **Sem** nome do projeto, de pastas ou de arquivos.
-- **Modo privado:** inclui árvore de arquivos e, em ASP.NET Web Forms, páginas, Master Pages, code-behind, controles e referências CSS/JS.
+~~~mermaid
+flowchart LR
+    A["Projeto local<br/>somente leitura"] --> B["Project Structure Mapper"]
+    B --> C["Resumo público"]
+    B --> D["Relatório privado"]
+    C --> E["Pasta de saída<br/>+ ZIP"]
+    D --> E
+~~~
 
-### ASP.NET Web Forms
+- **Modo público (padrão):** estatísticas e tecnologias prováveis, sem nomes de projeto, pastas ou arquivos.
+- **Modo privado:** inclui a estrutura interna, árvore e referências de arquivos; **somente para uso autorizado**.
 
-- Lê diretivas `<%@ Page %>`, `<%@ Master %>`, `<%@ Control %>`, `<%@ Register %>`, `<%@ Reference %>` e `<%@ MasterType %>` em `.aspx`, `.master` e `.ascx`.
-- Lê os registros globais `<pages><controls><add tagPrefix tagName src/>` de **cada** `Web.config` (inclusive `web.config` minúsculo e em subpastas, que valem só para a própria subpasta). Nada mais do `Web.config` é lido para o relatório, e ele nunca é exportado.
-- Compara caminhos sem diferenciar maiúsculas/minúsculas, como o Windows/IIS (`~/site.master` encontra `Site.master`).
-- Aceita arquivos em UTF-8, UTF-16 (padrão antigo do Visual Studio) e Windows-1252.
+### O que reconhece?
 
-Status das referências:
+- **ASP.NET Web Forms:** páginas .aspx, controles .ascx, Master Pages .master, diretivas Page, Master, Control, Register, Reference e MasterType; registros de controles de Web.config na raiz e subpastas.
+- **Python:** arquivos .py e sinais de projeto como pyproject.toml e requirements.txt.
+- **Node.js / TypeScript:** arquivos package.json, JavaScript, TypeScript e TSX.
+- **Referências estáticas:** os estados **localizado**, **nao_encontrado** e **contextual** (o último não significa necessariamente erro).
 
-- `localizado`: o arquivo existe no projeto.
-- `nao_encontrado`: o caminho estático não existe no projeto (pode ser erro ou arquivo gerado no build).
-- `contextual`: CSS/JS relativo dentro de `.master`/`.ascx`; depende da URL da página renderizada. **Não é erro.**
+## Segurança e limitações
 
-### Python e Node.js
+- Usa apenas a **biblioteca padrão do Python**, sem instalar pacotes extras.
+- Não modifica, executa, compila ou copia o código do projeto analisado.
+- Não envia telemetria nem acessa a rede durante o mapeamento.
+- Recusa saída dentro do projeto e não percorre links simbólicos.
+- Ignora arquivos e pastas sensíveis ou gerados. Em Web Forms, lê apenas registros estáticos de controles do Web.config, **sem exportar o conteúdo do arquivo**.
+- **Não** verifica a qualidade do software, o banco de dados, a segurança real nem referências geradas dinamicamente.
 
-Identifica tecnologias pelos arquivos (`.py`, `pyproject.toml`, `requirements.txt`, `package.json`, `.ts`, `.tsx`...) e ignora `.venv`, `venv`, qualquer ambiente virtual com `pyvenv.cfg`, `__pycache__`, `node_modules`, `dist`, `build` e `.next`.
+> **Projetos corporativos:** não coloque arquivos internos, relatórios privados, credenciais ou dados de clientes neste repositório. Mesmo um relatório público precisa de revisão antes de ser divulgado.
 
-## Proteção de dados
+## Testes e status de validação
 
-- **Somente leitura:** a ferramenta não cria, altera nem apaga nada no projeto analisado (há teste automatizado comparando o conteúdo antes e depois).
-- **Sem rede:** não há telemetria; o código não importa bibliotecas de rede (há teste que bloqueia conexões durante a execução).
-- **Relatório fora do projeto:** a ferramenta se recusa a salvar dentro da pasta analisada.
-- **Arquivos sensíveis omitidos:** `.env*`, `appsettings*`, `Web.config` e arquivos com `secret`, `senha`, `password`, `token`, `credential` ou `apikey` no nome não entram no inventário. O relatório informa apenas **quantos** foram omitidos.
-- **O código-fonte não é copiado.** Arquivos de marcação são lidos localmente só para encontrar relações.
-- Links simbólicos não são percorridos; `Web.config` com `DOCTYPE`/entidades é ignorado.
-- Pastas `ProjectStructureReports/` e relatórios soltos estão no `.gitignore`.
+O [PR Draft #1](https://github.com/mateuscengeroff-prog/Project-Structure-Mapper/pull/1) registra **34 testes automatizados aprovados em Linux** com Python 3.8, 3.11, 3.12 e 3.13.
 
-**Importante:** relatórios privados mostram nomes de arquivos e módulos, que podem ser confidenciais. Não os publique sem autorização. O modo público reduz a exposição, mas revise-o antes de compartilhar.
+Para rodar os testes localmente:
 
-## Problemas comuns
+~~~bat
+py -3 -m unittest discover -s tests -v
+~~~
 
-| Sintoma | O que fazer |
-|---|---|
-| "Python 3.8 ou mais novo não foi encontrado" | Instale o Python pelo site oficial marcando "Add python.exe to PATH" e abra o `.bat` de novo. |
-| O Windows mostra "O Windows protegeu o computador" | Clique em **Mais informações → Executar assim mesmo**. O `.bat` só chama o `mapper.py` desta pasta. |
-| A janela de seleção de pasta não aparece | Ela pode abrir atrás de outras janelas; ou cole o caminho da pasta diretamente. |
-| "A pasta de saída fica DENTRO do projeto" | Escolha outra pasta, como Documentos. É uma proteção para não alterar o projeto. |
-| "Limite de 25000 arquivos atingido" | Escolha uma pasta mais específica (não o disco inteiro). |
-| "Nenhum arquivo de código reconhecido" | Confira se escolheu a pasta raiz do projeto. |
+**Ainda não homologado em Windows real:** duplo clique no BAT, arrastar e soltar, seleção gráfica de pasta e abertura da pasta de resultados. Não confundir testes executados em Linux com validação no Windows.
 
-## O que o Mapper não faz?
+## Dúvidas e soluções
 
-Ele **não** compila, executa, testa a segurança, acessa bancos ou valida o comportamento do sistema. Referências montadas dinamicamente (`<%= ResolveUrl(...) %>`, rotas, imports em tempo de execução) não são detectadas. Um status `contextual` não significa erro.
+Consulte **[Guia para iniciantes — Windows 10/11](docs/GUIA_WINDOWS.md#solução-de-problemas)** para Python não reconhecido, aviso do Windows, janela de seleção ausente, caminhos com espaços e relatórios recusados.
 
-## Executar os testes
+## Arquivos do projeto
 
-```bash
-python -m unittest discover -s tests -v
-```
+~~~text
+INICIAR_WINDOWS.bat     Inicializador no Windows
+mapper.py               Mapeador e assistente interativo
+tests/test_mapper.py    Testes automatizados
+docs/GUIA_WINDOWS.md    Tutorial de instalação e CMD
+README.md               Esta apresentação
+~~~
 
-Os testes criam projetos **fictícios** (ASP.NET Web Forms, Python e Node.js) numa pasta temporária. Nenhum projeto real é necessário.
+## Licença e contribuições
 
-Situação da validação:
+Este repositório está em desenvolvimento. **Ainda não há licença de código aberto definida**; não presuma autorização de redistribuição ou uso comercial. Antes de torná-lo público, escolha uma licença e revise a segurança dos arquivos e relatórios.
 
-- Suíte automatizada executada em Linux com Python 3.8, 3.11, 3.12 e 3.13.
-- Assistente interativo testado em terminal real (pseudo-terminal Linux) e por testes automatizados.
-- **Ainda não executado em Windows real:** o duplo clique no `INICIAR_WINDOWS.bat`, o arrastar-e-soltar, a janela de seleção de pasta e o "Abrir pasta" no Explorer. Roteiro para validar:
-  1. Rodar `py -3 -m unittest discover -s tests -v` no Prompt de Comando.
-  2. Clicar duas vezes no `.bat` e mapear um projeto fictício nos dois modos.
-  3. Arrastar uma pasta para cima do `.bat`.
-  4. Testar uma pasta com espaços e acentos no nome.
+<div align="center">
 
-## Licença e contribuição
+**Um mapa mais claro do projeto, sem tocar no seu código.**
 
-MVP v2. Ideias futuras: visão HTML local, análise de `.csproj`/imports Python/Node e resolução de rotas.
+[Voltar ao início](#project-structure-mapper)
 
-Antes de tornar o repositório público, faça revisão de segurança, execute a suíte de testes e escolha uma licença apropriada.
+</div>
