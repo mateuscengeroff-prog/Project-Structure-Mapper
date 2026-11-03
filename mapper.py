@@ -399,7 +399,7 @@ def choose_folder():
         selected = filedialog.askdirectory(title="Selecione a pasta do projeto")
         window.destroy()
         return selected
-    except (ImportError, OSError, RuntimeError, tk.TclError) if "tk" in locals() else (ImportError, OSError, RuntimeError):
+    except Exception:  # Falha opcional do seletor gráfico: volta ao caminho digitado.
         return ""
 
 
