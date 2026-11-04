@@ -180,7 +180,7 @@ To check the automated test suite, open CMD in the Mapper folder and type:
 py -3 -m unittest discover -s tests -v
 ~~~
 
-Version 2 reports **34 tests passing on Linux**, using fictitious projects (see the [history of PR #1](https://github.com/mateuscengeroff-prog/Project-Structure-Mapper/pull/1)). **The BAT and the folder picker still need to be checked on a real Windows machine.**
+Version 2 reports **34 tests passing on Linux**, using fictitious projects (see the [history of PR #1](https://github.com/mateuscengeroff-prog/Project-Structure-Mapper/pull/1)). The author also tested it by hand on a physical Windows machine on 4 November 2026.
 
 ---
 
