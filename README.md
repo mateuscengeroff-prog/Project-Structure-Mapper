@@ -47,7 +47,7 @@ Recebeu um projeto grande e não sabe por onde começar? O **Project Structure M
 
 **Atalho:** arraste a pasta do projeto **sobre o INICIAR_WINDOWS.bat**. O assistente recebe o caminho automaticamente.
 
-> **Versão em desenvolvimento:** enquanto o [PR #1 da v2](https://github.com/mateuscengeroff-prog/Project-Structure-Mapper/pull/1) estiver em Draft, a branch **main** pode conter apenas o arquivo .gitignore. Nesse caso, antes do **Code → Download ZIP**, selecione **feat/interactive-mapper-v2** no seletor de branches do GitHub. O arquivo BAT ainda **não foi testado num Windows físico**.
+> **Status de validação:** a versão v2 já está publicada na branch **main**. O arquivo BAT e o seletor gráfico **ainda precisam de teste num Windows físico**; use primeiro uma pasta de testes e revise os resultados.
 
 <details>
 <summary><strong>Como reconhecer a pasta correta depois da extração?</strong></summary>
@@ -61,7 +61,7 @@ Project-Structure-Mapper/
     └── test_mapper.py
 ~~~
 
-Se só apareceu .gitignore, você baixou a branch main antes da integração da versão 2.
+Se a pasta não contém mapper.py e INICIAR_WINDOWS.bat, verifique se baixou a branch main atualizada e extraiu o ZIP completo.
 
 </details>
 
@@ -158,7 +158,7 @@ flowchart LR
 
 ## Testes e status de validação
 
-O [PR Draft #1](https://github.com/mateuscengeroff-prog/Project-Structure-Mapper/pull/1) registra **34 testes automatizados aprovados em Linux** com Python 3.8, 3.11, 3.12 e 3.13.
+A implementação v2 registra **34 testes automatizados aprovados em Linux** com Python 3.8, 3.11, 3.12 e 3.13, conforme o histórico do [PR #1](https://github.com/mateuscengeroff-prog/Project-Structure-Mapper/pull/1).
 
 Para rodar os testes localmente:
 
