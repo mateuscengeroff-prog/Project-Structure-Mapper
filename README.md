@@ -6,221 +6,223 @@
   <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)" srcset="docs/img/banner-dark-static.svg">
   <source media="(prefers-reduced-motion: reduce)" srcset="docs/img/banner-light-static.svg">
   <source media="(prefers-color-scheme: dark)" srcset="docs/img/banner-dark.svg">
-  <img src="docs/img/banner-light.svg" width="860" alt="Project Structure Mapper. Entenda a estrutura de projetos de código sem abrir arquivo por arquivo. Diagrama: a pasta do projeto é lida sem alterações e gera um resumo público ou um relatório privado, salvos fora do projeto. Windows 10/11, Python 3.8+, somente leitura e offline. Versão 2.1.0 na main; falta teste num Windows físico.">
+  <img src="docs/img/banner-light.svg" width="860" alt="Project Structure Mapper. Local, read-only code mapping tool. Understand how a codebase is organised without opening it file by file. runs on: Windows 10/11 · Python 3.8+. project: read-only, offline. version: v2.1.0 on main. Windows test pending.">
 </picture>
 
 <div align="center">
 
-**Mapeador local, gratuito e guiado em português — Python, Node.js e ASP.NET Web Forms.**
+**A free, local mapper with a guided assistant. Python, Node.js and ASP.NET Web Forms.**
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Windows](https://img.shields.io/badge/Windows-10%20%2F%2011-0078D4?style=flat-square)
-![Offline](https://img.shields.io/badge/Execu%C3%A7%C3%A3o-Offline-257B57?style=flat-square)
-![Sem pacotes](https://img.shields.io/badge/Pacotes%20extras-Zero-555?style=flat-square)
-![Somente leitura](https://img.shields.io/badge/Projeto%20analisado-Somente%20leitura-257B57?style=flat-square)
+![Offline](https://img.shields.io/badge/Runs-Offline-257B57?style=flat-square)
+![No packages](https://img.shields.io/badge/Extra%20packages-None-555?style=flat-square)
+![Read-only](https://img.shields.io/badge/Analysed%20project-Read--only-257B57?style=flat-square)
 
-**[Instalar e começar](#comece-aqui-windows-10-e-11) · [Comandos CMD](#uso-pelo-cmd-prompt-de-comando) · [Relatórios](#resultados-gerados) · [Ajuda para iniciantes](docs/GUIA_WINDOWS.md)**
+**[Get started](#get-started-windows-10-and-11) · [Command line](#command-line-usage) · [Reports](#what-you-get) · [Beginner's guide](docs/WINDOWS_GUIDE.md)**
 
 </div>
 
 ---
 
-## O que é?
+## What it is
 
-Recebeu um projeto grande e não sabe por onde começar? O **Project Structure Mapper** cria um mapa do repositório para ajudar a identificar tecnologias, pastas, arquivos e relações estáticas.
+Handed a large project and not sure where to start? **Project Structure Mapper** builds a map of a repository so you can see its technologies, folders, files and static relationships at a glance.
 
-| Perfil | O que você consegue fazer |
+| Who | What it helps with |
 | --- | --- |
-| **Iniciante** | Usar um menu passo a passo, sem precisar aprender CMD |
-| **Desenvolvedor** | Enxergar a estrutura rapidamente |
-| **Legado ASP.NET** | Relacionar páginas, Master Pages, controles e arquivos declarados |
-| **Equipe técnica** | Gerar relatórios locais sem copiar o código-fonte |
+| **Beginners** | A step-by-step menu; no need to learn the command line |
+| **Developers** | A quick picture of how a codebase is laid out |
+| **Legacy ASP.NET** | Links between pages, Master Pages, user controls and declared files |
+| **Teams** | Local reports that never copy the source code |
 
-> **Privacidade primeiro:** a ferramenta lê os arquivos localmente, não altera a pasta analisada e não envia o projeto para a internet. O relatório é salvo em outra pasta. Ainda assim, revise qualquer resultado antes de compartilhar.
+> **Privacy first:** the tool reads files locally, never changes the folder it analyses and never sends the project anywhere. Reports are saved in a separate folder. Still, review any report before sharing it.
 
-## Comece aqui: Windows 10 e 11
+> **Interface language:** the assistant's menus and the generated reports are in Portuguese, the author's native language. Everything else in this repository is in English.
 
-**Requisito:** Python 3.8 ou mais recente. **Não precisa instalar Git, Visual Studio ou bibliotecas Python adicionais.**
+## Get started: Windows 10 and 11
 
-1. **Instale o Python:** [python.org/downloads](https://www.python.org/downloads/). Marque **Add python.exe to PATH** caso essa opção apareça no instalador.
-2. **Baixe os arquivos do projeto:** no GitHub, clique em **Code → Download ZIP** e extraia o ZIP. É preciso extrair antes de executar.
-3. **Abra a pasta extraída** e confirme que existem os arquivos **INICIAR_WINDOWS.bat** e **mapper.py**.
-4. **Dê dois cliques em INICIAR_WINDOWS.bat**. Uma janela do Prompt de Comando vai abrir.
-5. Escolha **1 — Mapear um projeto** (ou pressione Enter).
-6. Cole o caminho da pasta que quer analisar, ou pressione Enter para tentar abrir a janela de seleção.
-7. Escolha **1 — Público/resumido** ou **2 — Privado/detalhado**.
-8. Pressione Enter para usar a pasta de saída padrão ou escolha outra **fora da pasta analisada**.
-9. Confira o resumo, confirme e, ao concluir, abra a pasta dos resultados.
+**Requirement:** Python 3.8 or newer. **No Git, Visual Studio or extra Python packages needed.**
 
-**Atalho:** arraste a pasta do projeto **sobre o INICIAR_WINDOWS.bat**. O assistente recebe o caminho automaticamente.
+1. **Install Python** from [python.org/downloads](https://www.python.org/downloads/). Tick **Add python.exe to PATH** if the installer shows it.
+2. **Download the project:** on GitHub, click **Code → Download ZIP**, then extract the ZIP. It must be extracted before you run it.
+3. **Open the extracted folder** and check that it contains **INICIAR_WINDOWS.bat** and **mapper.py**.
+4. **Double-click INICIAR_WINDOWS.bat**. A Command Prompt window opens.
+5. Choose **1 (map a project)**, or just press Enter.
+6. Paste the path of the folder to analyse, or press Enter to open a folder picker.
+7. Choose **1 (public summary)** or **2 (private, detailed report)**.
+8. Press Enter to use the default output folder, or pick another one **outside the analysed folder**.
+9. Check the summary, confirm, and open the results folder when it finishes.
 
-**Assim fica o assistente** (trechos de uma execução real, com um projeto fictício):
+**Shortcut:** drag the project folder **onto INICIAR_WINDOWS.bat**. The assistant starts with the path already filled in.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/img/assistente-dark.svg">
-  <img src="docs/img/assistente-light.svg" width="860" alt="Assistente no terminal: menu inicial, passo 1 com o caminho da pasta, passo 2 com a escolha entre relatório público e privado, passo 3 com a pasta de saída padrão, aviso de confidencialidade e resultado com 15 arquivos indexados, 16 referências estáticas e 1 arquivo sensível omitido.">
+  <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="docs/img/flow-mobile-dark.svg">
+  <source media="(max-width: 600px)" srcset="docs/img/flow-mobile-light.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/flow-dark.svg">
+  <img src="docs/img/flow-light.svg" width="860" alt="Using the assistant. 1. Start it: Double-click INICIAR_WINDOWS.bat, or drop a project folder onto it. 2. Pick the folder: Paste a path or choose the folder in a picker window. 3. Pick a mode: A public summary to share, or a private report for internal use. 4. Get the reports: A new folder outside the project, with Markdown, JSON and a ZIP.">
 </picture>
 
-> **Status de validação:** a versão v2 já está publicada na branch **main**. O arquivo BAT e o seletor gráfico **ainda precisam de teste num Windows físico**; use primeiro uma pasta de testes e revise os resultados.
+> **Validation status:** version 2 is on the **main** branch. The BAT launcher and the graphical folder picker **still need a test on a physical Windows machine**. Try a test folder first and review the results.
 
 <details>
-<summary><strong>Como reconhecer a pasta correta depois da extração?</strong></summary>
+<summary><strong>How do I know I extracted the right folder?</strong></summary>
 
 ~~~text
 Project-Structure-Mapper/
-├── INICIAR_WINDOWS.bat   ← dois cliques
-├── mapper.py              ← programa Python
-├── README.md              ← este guia
+├── INICIAR_WINDOWS.bat   ← double-click this
+├── mapper.py              ← the Python program
+├── README.md              ← this guide
 └── tests/
     └── test_mapper.py
 ~~~
 
-Se a pasta não contém mapper.py e INICIAR_WINDOWS.bat, verifique se baixou a branch main atualizada e extraiu o ZIP completo.
+If the folder has no mapper.py and INICIAR_WINDOWS.bat, check that you downloaded the up-to-date main branch and extracted the whole ZIP.
 
 </details>
 
-## Uso pelo CMD (Prompt de Comando)
+## Command-line usage
 
-**CMD** é o terminal clássico do Windows 10 e 11. O aplicativo **não exige que você saiba usá-lo**, mas aqui estão os comandos para executar e entender.
+**CMD** (Command Prompt) is the classic Windows 10 and 11 terminal. The app **does not require it**, but these are the commands if you want them.
 
-1. No **Explorador de Arquivos**, entre na pasta que contém **mapper.py**.
-2. Clique na barra de endereço dessa pasta, digite **cmd** e pressione **Enter**.
-3. Na janela que abrir, digite um dos comandos a seguir.
+1. In **File Explorer**, open the folder that contains **mapper.py**.
+2. Click the address bar of that folder, type **cmd** and press **Enter**.
+3. Type one of the commands below in the window that opens.
 
-**Verificar se o Python está instalado:**
+**Check that Python is installed:**
 
 ~~~bat
 py -3 --version
 ~~~
 
-**Abrir o assistente pelo terminal:**
+**Start the assistant from the terminal:**
 
 ~~~bat
 INICIAR_WINDOWS.bat
 ~~~
 
-Ou, diretamente pelo Python:
+Or directly with Python:
 
 ~~~bat
 py -3 mapper.py
 ~~~
 
-**Mapear um projeto de exemplo no modo público (sem menu):**
+**Map a project in public mode, without the menu:**
 
 ~~~bat
-py -3 mapper.py "C:\Projetos\MeuProjeto" --mode public
+py -3 mapper.py "C:\Projects\MyProject" --mode public
 ~~~
 
-**Gerar relatório detalhado em uma pasta separada:**
+**Write a detailed report to a separate folder:**
 
 ~~~bat
-py -3 mapper.py "C:\Projetos\MeuProjeto" --mode private --output "%USERPROFILE%\Documents\RelatoriosMapper"
+py -3 mapper.py "C:\Projects\MyProject" --mode private --output "%USERPROFILE%\Documents\MapperReports"
 ~~~
 
-**Mostrar ajuda:**
+**Show help:**
 
 ~~~bat
 py -3 mapper.py --help
 ~~~
 
-Substitua **C:\Projetos\MeuProjeto** pelo caminho real da pasta a analisar. Use **aspas** para caminhos com espaços.
+Replace **C:\Projects\MyProject** with the real folder to analyse. Use **quotes** for paths with spaces.
 
-Se **py** não for reconhecido, tente **python --version**. Caso funcione, use **python** no lugar de **py -3**.
+If **py** is not recognised, try **python --version**. If that works, use **python** instead of **py -3**.
 
-**[Tutorial completo: CMD, download, pasta de saída e resolução de erros](docs/GUIA_WINDOWS.md)**
+**[Full tutorial: CMD, download, output folder and troubleshooting](docs/WINDOWS_GUIDE.md)**
 
-## Resultados gerados
+## What you get
 
-A cada execução, é criada uma **nova pasta de saída**. Os relatórios não ficam dentro do projeto analisado.
+Every run creates a **new output folder**. Reports are never written inside the analysed project. File names are in Portuguese:
 
-| Arquivo | Público | Privado | Conteúdo |
+| File | Public | Private | Contents |
 | --- | :---: | :---: | --- |
-| **relatorio.md** | ✓ | ✓ | Resumo para leitura |
-| **estrutura.json** | ✓ | ✓ | Dados estruturados |
-| **arvore.txt** | — | ✓ | Árvore de pastas e arquivos |
-| **mapa_do_projeto.zip** | ✓ | ✓ | Pacote dos relatórios, sem código-fonte |
-
-**A diferença entre os dois modos**, no mesmo projeto fictício:
+| **relatorio.md** (report) | ✓ | ✓ | Human-readable summary |
+| **estrutura.json** (structure) | ✓ | ✓ | Structured data |
+| **arvore.txt** (tree) | — | ✓ | Folder and file tree |
+| **mapa_do_projeto.zip** | ✓ | ✓ | The reports in one ZIP, without source code |
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/img/relatorios-dark.svg">
-  <img src="docs/img/relatorios-light.svg" width="860" alt="Dois trechos de relatorio.md lado a lado. O público mostra só contagens e tecnologias e omite nomes. O privado mostra o nome do projeto, uso de Master Pages, referências por status e relações entre arquivos, incluindo uma referência não encontrada.">
+  <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="docs/img/board-mobile-dark.svg">
+  <source media="(max-width: 600px)" srcset="docs/img/board-mobile-light.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/board-dark.svg">
+  <img src="docs/img/board-light.svg" width="860" alt="Public vs. private report. Public mode: File counts by type; Likely technologies, such as ASP.NET Web Forms, C# or Python; How many sensitive files were skipped; No project, folder or file names. Private mode, internal use only: Everything in the public report; Project name and the full file tree (arvore.txt); Master Page usage and references by status; Static links between pages, code-behind files and controls.">
 </picture>
 
-- **Modo público (padrão):** estatísticas e tecnologias prováveis, sem nomes de projeto, pastas ou arquivos.
-- **Modo privado:** inclui a estrutura interna, árvore e referências de arquivos; **somente para uso autorizado**.
+- **Public mode (default):** statistics and likely technologies, without project, folder or file names.
+- **Private mode:** adds the internal structure, the tree and file references. **For authorised internal use only.**
 
-### O que reconhece?
+### What it recognises
 
-- **ASP.NET Web Forms:** páginas .aspx, controles .ascx, Master Pages .master, diretivas Page, Master, Control, Register, Reference e MasterType; registros de controles de Web.config na raiz e subpastas.
-- **Python:** arquivos .py e sinais de projeto como pyproject.toml e requirements.txt.
-- **Node.js / TypeScript:** arquivos package.json, JavaScript, TypeScript e TSX.
-- **Referências estáticas:** os estados **localizado**, **nao_encontrado** e **contextual** (o último não significa necessariamente erro).
+- **ASP.NET Web Forms:** .aspx pages, .ascx controls, .master Master Pages; the Page, Master, Control, Register, Reference and MasterType directives; control registrations in Web.config files at the root and in subfolders.
+- **Python:** .py files and project signals such as pyproject.toml and requirements.txt.
+- **Node.js / TypeScript:** package.json, JavaScript, TypeScript and TSX files.
+- **Static references:** each one is marked **localizado** (found), **nao_encontrado** (not found) or **contextual** (the last one is not necessarily an error).
 
-## Como funciona por dentro
+## How it works inside
 
-Tudo acontece em **mapper.py**, numa sequência de etapas que só leem arquivos:
+Everything happens in **mapper.py**, in a sequence of steps that only read files:
 
-| Etapa | Função | O que faz |
+| Step | Function | What it does |
 | --- | --- | --- |
-| **1. Inventário** | inventory | Percorre a pasta, pula dependências e builds (node_modules, bin, obj...) e para em 25.000 arquivos |
-| **2. Filtro de segurança** | classify_name | Separa o que é código, o que não interessa e o que é **sensível** (.env, Web.config, nomes com senha ou token), que nunca entra no relatório |
-| **3. Tecnologias** | detect_tech | Deduz as tecnologias pelas extensões e por manifestos como package.json e pyproject.toml |
-| **4. Referências Web Forms** | links_for_file | Lê diretivas Page, Master, Control e Register e liga cada página ao code-behind, à Master Page e aos controles, resolvendo caminhos como o IIS (sem diferenciar maiúsculas) |
-| **5. Relatórios** | generate | Monta relatorio.md, estrutura.json e, no modo privado, arvore.txt; depois cria o ZIP numa pasta nova, **fora do projeto** |
+| **1. Inventory** | inventory | Walks the folder, skips dependencies and builds (node_modules, bin, obj...) and stops at 25,000 files |
+| **2. Safety filter** | classify_name | Separates code, irrelevant files and **sensitive** files (.env, Web.config, names containing password or token), which never reach the report |
+| **3. Technologies** | detect_tech | Infers technologies from file extensions and manifests such as package.json and pyproject.toml |
+| **4. Web Forms references** | links_for_file | Reads the Page, Master, Control and Register directives and links each page to its code-behind, Master Page and controls, resolving paths the way IIS does (case-insensitive) |
+| **5. Reports** | generate | Writes relatorio.md, estrutura.json and, in private mode, arvore.txt; then zips them into a new folder **outside the project** |
 
-Cada referência recebe um estado: **localizado** (o arquivo existe), **nao_encontrado** (o caminho declarado não existe na pasta) ou **contextual** (depende da URL no navegador, então não dá para afirmar só lendo os arquivos).
+Each reference gets a state: **localizado** (the file exists), **nao_encontrado** (the declared path does not exist in the folder) or **contextual** (it depends on the URL in the browser, so it cannot be confirmed from the files alone).
 
-Os testes provam a promessa principal: calculam um **hash** de todos os arquivos do projeto de teste antes e depois do mapeamento e falham se qualquer byte mudar.
+The tests check the main promise: they hash every file of the test project before and after mapping and fail if a single byte changes.
 
-## Segurança e limitações
+## Safety and limitations
 
-- Usa apenas a **biblioteca padrão do Python**, sem instalar pacotes extras.
-- Não modifica, executa, compila ou copia o código do projeto analisado.
-- Não envia telemetria nem acessa a rede durante o mapeamento.
-- Recusa saída dentro do projeto e não percorre links simbólicos.
-- Ignora arquivos e pastas sensíveis ou gerados. Em Web Forms, lê apenas registros estáticos de controles do Web.config, **sem exportar o conteúdo do arquivo**.
-- **Não** verifica a qualidade do software, o banco de dados, a segurança real nem referências geradas dinamicamente.
+- Uses only the **Python standard library**; nothing extra to install.
+- Never modifies, runs, compiles or copies the analysed project's code.
+- Sends no telemetry and makes no network connections while mapping.
+- Refuses output folders inside the project and does not follow symbolic links.
+- Skips sensitive and generated files and folders. For Web Forms it reads only the static control registrations in Web.config, **without exporting the file's contents**.
+- Does **not** judge software quality, the database, real security or dynamically built references.
 
-> **Projetos corporativos:** não coloque arquivos internos, relatórios privados, credenciais ou dados de clientes neste repositório. Mesmo um relatório público precisa de revisão antes de ser divulgado.
+> **Company projects:** never add internal files, private reports, credentials or customer data to this repository. Even a public report needs a review before it is shared.
 
-## Testes e status de validação
+## Tests and validation status
 
-A implementação v2 registra **34 testes automatizados aprovados em Linux** com Python 3.8, 3.11, 3.12 e 3.13, conforme o histórico do [PR #1](https://github.com/mateuscengeroff-prog/Project-Structure-Mapper/pull/1).
+Version 2 has **34 automated tests passing on Linux** with Python 3.8, 3.11, 3.12 and 3.13, as recorded in [PR #1](https://github.com/mateuscengeroff-prog/Project-Structure-Mapper/pull/1).
 
-Para rodar os testes localmente:
+To run them locally:
 
 ~~~bat
 py -3 -m unittest discover -s tests -v
 ~~~
 
-**Ainda não homologado em Windows real:** duplo clique no BAT, arrastar e soltar, seleção gráfica de pasta e abertura da pasta de resultados. Não confundir testes executados em Linux com validação no Windows.
+**Not yet checked on a real Windows machine:** double-clicking the BAT, drag and drop, the graphical folder picker and opening the results folder. Tests on Linux are not the same as validation on Windows.
 
-## Dúvidas e soluções
+## Troubleshooting
 
-Consulte **[Guia para iniciantes — Windows 10/11](docs/GUIA_WINDOWS.md#solução-de-problemas)** para Python não reconhecido, aviso do Windows, janela de seleção ausente, caminhos com espaços e relatórios recusados.
+See the **[beginner's guide for Windows 10/11](docs/WINDOWS_GUIDE.md#6-troubleshooting)** for Python not being recognised, Windows warnings, a missing folder picker, paths with spaces and rejected output folders.
 
-## Arquivos do projeto
+## Project files
 
 ~~~text
-INICIAR_WINDOWS.bat     Inicializador no Windows
-mapper.py               Mapeador e assistente interativo
-tests/test_mapper.py    Testes automatizados
-docs/GUIA_WINDOWS.md    Tutorial de instalação e CMD
-docs/img/               Ilustrações deste README
-README.md               Esta apresentação
+INICIAR_WINDOWS.bat     Windows launcher
+mapper.py               Mapper and interactive assistant
+tests/test_mapper.py    Automated tests
+docs/WINDOWS_GUIDE.md   Installation and CMD tutorial
+docs/img/               Illustrations for this README
+README.md               This page
 ~~~
 
-As ilustrações em docs/img são SVGs desenhados em código, na mesma identidade visual do [perfil do autor](https://github.com/mateuscengeroff-prog). O assistente e os relatórios reproduzem uma execução real sobre um projeto fictício; não são capturas de tela. Para regerá-las, rode `python scripts/repo_art.py mapper <pasta>` no repositório do perfil.
+The illustrations in docs/img are SVGs drawn in code, in the same visual identity as the [author's profile](https://github.com/mateuscengeroff-prog). They are diagrams, not screenshots. To regenerate them, run `python scripts/repo_art.py mapper <folder>` in the profile repository.
 
-## Licença e contribuições
+## Licence and contributions
 
-Este repositório está em desenvolvimento. **Ainda não há licença de código aberto definida**; não presuma autorização de redistribuição ou uso comercial. Antes de torná-lo público, escolha uma licença e revise a segurança dos arquivos e relatórios.
+This repository is under development. **No open-source licence has been chosen yet**, so do not assume permission to redistribute it or use it commercially. Before making it public, choose a licence and review the files and reports for security.
 
 <div align="center">
 
-**Um mapa mais claro do projeto, sem tocar no seu código.**
+**A clearer map of the project, without touching your code.**
 
-[Voltar ao início](#project-structure-mapper)
+[Back to top](#what-it-is)
 
 </div>

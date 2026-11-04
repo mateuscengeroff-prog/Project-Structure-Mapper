@@ -1,4 +1,4 @@
-# Dependências Python e ambientes
+# Python dependencies and environments
 __pycache__/
 *.py[cod]
 .venv/
@@ -7,7 +7,7 @@ venv/
 .env.*
 !.env.example
 
-# Relatórios de projetos analisados (potencialmente confidenciais)
+# Reports of analysed projects (potentially confidential)
 ProjectStructureReports/
 reports/
 output/
@@ -16,7 +16,7 @@ estrutura.json
 arvore.txt
 relatorio.md
 
-# Arquivos pessoais/editor
+# Personal and editor files
 .vs/
 .vscode/
 .idea/
