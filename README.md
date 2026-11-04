@@ -6,7 +6,7 @@
   <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)" srcset="docs/img/banner-dark-static.svg">
   <source media="(prefers-reduced-motion: reduce)" srcset="docs/img/banner-light-static.svg">
   <source media="(prefers-color-scheme: dark)" srcset="docs/img/banner-dark.svg">
-  <img src="docs/img/banner-light.svg" width="860" alt="Project Structure Mapper. Local, read-only code mapping tool. Understand how a codebase is organised without opening it file by file. runs on: Windows 10/11 · Python 3.8+. project: read-only, offline. version: v2.1.0 on main. Windows test pending.">
+  <img src="docs/img/banner-light.svg" width="860" alt="Project Structure Mapper. Local, read-only code mapping tool. Understand how a codebase is organised without opening it file by file. runs on: Windows 10/11 · Python 3.8+. project: read-only, offline. version: v2.1.0 on main. Tested on Windows.">
 </picture>
 
 <div align="center">
@@ -63,7 +63,7 @@ Handed a large project and not sure where to start? **Project Structure Mapper**
   <img src="docs/img/flow-light.svg" width="860" alt="Using the assistant. 1. Start it: Double-click INICIAR_WINDOWS.bat, or drop a project folder onto it. 2. Pick the folder: Paste a path or choose the folder in a picker window. 3. Pick a mode: A public summary to share, or a private report for internal use. 4. Get the reports: A new folder outside the project, with Markdown, JSON and a ZIP.">
 </picture>
 
-> **Validation status:** version 2 is on the **main** branch. The BAT launcher and the graphical folder picker **still need a test on a physical Windows machine**. Try a test folder first and review the results.
+> **Validation status:** version 2 is on the **main** branch and was **tested by the author on a physical Windows machine** on 4 November 2026, in addition to the automated tests. As with any tool, try it on a test folder first and review the results.
 
 <details>
 <summary><strong>How do I know I extracted the right folder?</strong></summary>
@@ -196,7 +196,7 @@ To run them locally:
 py -3 -m unittest discover -s tests -v
 ~~~
 
-**Not yet checked on a real Windows machine:** double-clicking the BAT, drag and drop, the graphical folder picker and opening the results folder. Tests on Linux are not the same as validation on Windows.
+**Windows:** the author tested version 2 by hand on a physical Windows machine on 4 November 2026. The automated suite itself runs on Linux.
 
 ## Troubleshooting
 
@@ -217,7 +217,7 @@ The illustrations in docs/img are SVGs drawn in code, in the same visual identit
 
 ## Licence and contributions
 
-This repository is under development. **No open-source licence has been chosen yet**, so do not assume permission to redistribute it or use it commercially. Before making it public, choose a licence and review the files and reports for security.
+**No open-source licence has been chosen yet.** You are welcome to read the code and run the tool, but copyright stays with the author, so do not redistribute it or use it commercially without permission. Issues and suggestions are welcome.
 
 <div align="center">
 
