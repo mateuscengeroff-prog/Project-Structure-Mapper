@@ -32,7 +32,7 @@ python --version
 ## 2. Baixar os arquivos certos no GitHub
 
 1. Acesse o [Project Structure Mapper](https://github.com/mateuscengeroff-prog/Project-Structure-Mapper).
-2. **Enquanto a versão 2 estiver em PR Draft**, escolha a branch **feat/interactive-mapper-v2** no seletor de branches. A branch main ainda pode conter apenas .gitignore.
+2. Confirme que a branch selecionada é **main**. A versão 2 já está publicada nessa branch.
 3. Clique no botão **Code** e depois em **Download ZIP**.
 4. Abra a pasta Downloads e clique em **Extrair tudo** no arquivo baixado.
 5. Entre na pasta extraída. Ela precisa ter **mapper.py** e **INICIAR_WINDOWS.bat**.
@@ -153,7 +153,7 @@ O programa **não aceita salvar o relatório dentro do próprio projeto**. Essa 
 | --- | --- |
 | **Python 3.8 ou mais novo não foi encontrado** | Instale pelo site oficial, feche o CMD e abra novamente |
 | **py não é reconhecido** | Tente **python --version**. Se funcionar, substitua **py -3** por **python** nos comandos |
-| **O ZIP só contém .gitignore** | Você baixou a branch main antes da integração; selecione **feat/interactive-mapper-v2** |
+| **O ZIP só contém .gitignore** | Verifique se baixou a branch main atualizada e extraia o ZIP completo novamente |
 | **BAT não abre ou o Windows exibe um alerta** | Confirme a origem e leia o conteúdo do BAT com Bloco de Notas. **Não ignore avisos de segurança automaticamente**, nem execute código não autorizado |
 | **A janela para escolher pasta não abre** | Cole o caminho da pasta diretamente no terminal |
 | **A pasta tem espaços ou acentos** | Use aspas duplas, por exemplo **"C:\Meus Projetos\Projeto Exemplo"** |
@@ -178,7 +178,7 @@ Se quiser verificar a suíte automatizada, abra o CMD na pasta do Mapper e digit
 py -3 -m unittest discover -s tests -v
 ~~~
 
-O [PR da versão 2](https://github.com/mateuscengeroff-prog/Project-Structure-Mapper/pull/1) informa **34 testes aprovados em Linux**, usando projetos fictícios. **Ainda falta validar o BAT e o seletor gráfico num Windows real**.
+A implementação da versão 2 informa **34 testes aprovados em Linux**, usando projetos fictícios (veja o [histórico do PR #1](https://github.com/mateuscengeroff-prog/Project-Structure-Mapper/pull/1)). **Ainda falta validar o BAT e o seletor gráfico num Windows real**.
 
 ---
 
