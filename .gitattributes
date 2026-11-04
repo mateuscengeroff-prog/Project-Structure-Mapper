@@ -1,4 +1,4 @@
-# Scripts do Windows precisam de CRLF para o cmd.exe interpretar rótulos (goto) corretamente.
+# Windows scripts need CRLF line endings so cmd.exe reads labels (goto) correctly.
 *.bat text eol=crlf
 *.cmd text eol=crlf
 *.py text eol=lf
