@@ -1,8 +1,15 @@
+<picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)" srcset="docs/img/banner-mobile-dark-static.svg">
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="docs/img/banner-mobile-light-static.svg">
+  <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="docs/img/banner-mobile-dark.svg">
+  <source media="(max-width: 600px)" srcset="docs/img/banner-mobile-light.svg">
+  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)" srcset="docs/img/banner-dark-static.svg">
+  <source media="(prefers-reduced-motion: reduce)" srcset="docs/img/banner-light-static.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/banner-dark.svg">
+  <img src="docs/img/banner-light.svg" width="860" alt="Project Structure Mapper. Entenda a estrutura de projetos de código sem abrir arquivo por arquivo. Diagrama: a pasta do projeto é lida sem alterações e gera um resumo público ou um relatório privado, salvos fora do projeto. Windows 10/11, Python 3.8+, somente leitura e offline. Versão 2.1.0 na main; falta teste num Windows físico.">
+</picture>
+
 <div align="center">
-
-# Project Structure Mapper
-
-### Entenda a estrutura de projetos de código, sem abrir arquivo por arquivo.
 
 **Mapeador local, gratuito e guiado em português — Python, Node.js e ASP.NET Web Forms.**
 
@@ -46,6 +53,13 @@ Recebeu um projeto grande e não sabe por onde começar? O **Project Structure M
 9. Confira o resumo, confirme e, ao concluir, abra a pasta dos resultados.
 
 **Atalho:** arraste a pasta do projeto **sobre o INICIAR_WINDOWS.bat**. O assistente recebe o caminho automaticamente.
+
+**Assim fica o assistente** (trechos de uma execução real, com um projeto fictício):
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/assistente-dark.svg">
+  <img src="docs/img/assistente-light.svg" width="860" alt="Assistente no terminal: menu inicial, passo 1 com o caminho da pasta, passo 2 com a escolha entre relatório público e privado, passo 3 com a pasta de saída padrão, aviso de confidencialidade e resultado com 15 arquivos indexados, 16 referências estáticas e 1 arquivo sensível omitido.">
+</picture>
 
 > **Status de validação:** a versão v2 já está publicada na branch **main**. O arquivo BAT e o seletor gráfico **ainda precisam de teste num Windows físico**; use primeiro uma pasta de testes e revise os resultados.
 
@@ -126,14 +140,12 @@ A cada execução, é criada uma **nova pasta de saída**. Os relatórios não f
 | **arvore.txt** | — | ✓ | Árvore de pastas e arquivos |
 | **mapa_do_projeto.zip** | ✓ | ✓ | Pacote dos relatórios, sem código-fonte |
 
-~~~mermaid
-flowchart LR
-    A["Projeto local<br/>somente leitura"] --> B["Project Structure Mapper"]
-    B --> C["Resumo público"]
-    B --> D["Relatório privado"]
-    C --> E["Pasta de saída<br/>+ ZIP"]
-    D --> E
-~~~
+**A diferença entre os dois modos**, no mesmo projeto fictício:
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/relatorios-dark.svg">
+  <img src="docs/img/relatorios-light.svg" width="860" alt="Dois trechos de relatorio.md lado a lado. O público mostra só contagens e tecnologias e omite nomes. O privado mostra o nome do projeto, uso de Master Pages, referências por status e relações entre arquivos, incluindo uma referência não encontrada.">
+</picture>
 
 - **Modo público (padrão):** estatísticas e tecnologias prováveis, sem nomes de projeto, pastas ou arquivos.
 - **Modo privado:** inclui a estrutura interna, árvore e referências de arquivos; **somente para uso autorizado**.
@@ -144,6 +156,22 @@ flowchart LR
 - **Python:** arquivos .py e sinais de projeto como pyproject.toml e requirements.txt.
 - **Node.js / TypeScript:** arquivos package.json, JavaScript, TypeScript e TSX.
 - **Referências estáticas:** os estados **localizado**, **nao_encontrado** e **contextual** (o último não significa necessariamente erro).
+
+## Como funciona por dentro
+
+Tudo acontece em **mapper.py**, numa sequência de etapas que só leem arquivos:
+
+| Etapa | Função | O que faz |
+| --- | --- | --- |
+| **1. Inventário** | inventory | Percorre a pasta, pula dependências e builds (node_modules, bin, obj...) e para em 25.000 arquivos |
+| **2. Filtro de segurança** | classify_name | Separa o que é código, o que não interessa e o que é **sensível** (.env, Web.config, nomes com senha ou token), que nunca entra no relatório |
+| **3. Tecnologias** | detect_tech | Deduz as tecnologias pelas extensões e por manifestos como package.json e pyproject.toml |
+| **4. Referências Web Forms** | links_for_file | Lê diretivas Page, Master, Control e Register e liga cada página ao code-behind, à Master Page e aos controles, resolvendo caminhos como o IIS (sem diferenciar maiúsculas) |
+| **5. Relatórios** | generate | Monta relatorio.md, estrutura.json e, no modo privado, arvore.txt; depois cria o ZIP numa pasta nova, **fora do projeto** |
+
+Cada referência recebe um estado: **localizado** (o arquivo existe), **nao_encontrado** (o caminho declarado não existe na pasta) ou **contextual** (depende da URL no navegador, então não dá para afirmar só lendo os arquivos).
+
+Os testes provam a promessa principal: calculam um **hash** de todos os arquivos do projeto de teste antes e depois do mapeamento e falham se qualquer byte mudar.
 
 ## Segurança e limitações
 
@@ -179,8 +207,11 @@ INICIAR_WINDOWS.bat     Inicializador no Windows
 mapper.py               Mapeador e assistente interativo
 tests/test_mapper.py    Testes automatizados
 docs/GUIA_WINDOWS.md    Tutorial de instalação e CMD
+docs/img/               Ilustrações deste README
 README.md               Esta apresentação
 ~~~
+
+As ilustrações em docs/img são SVGs desenhados em código, na mesma identidade visual do [perfil do autor](https://github.com/mateuscengeroff-prog). O assistente e os relatórios reproduzem uma execução real sobre um projeto fictício; não são capturas de tela. Para regerá-las, rode `python scripts/repo_art.py mapper <pasta>` no repositório do perfil.
 
 ## Licença e contribuições
 
